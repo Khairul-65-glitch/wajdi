@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bangun Datar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+/* Reset dan dasar styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(90deg, #333, #555); /* Dark gradient */
+    color: white;
+    padding: 30px;
+    font-size: 38px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    background: #1c1c1c; /* Darker navbar */
+}
+
+nav .nav-link {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+nav .nav-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Styling untuk konten kolom */
+.col {
+    background-color: #1f1f1f; /* Dark gray for content columns */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.col:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+h5 {
+    color: #ffd700; /* Gold accent color */
+    font-weight: 600;
+}
+
+ol {
+    padding-left: 30px;
+    line-height: 1.8;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+.footer {
+    background: #1c1c1c; /* Dark footer */
+    color: #e0e0e0;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size: 14px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+    cursor: pointer;
+}
+
+/* Konten tambahan yang disembunyikan dan ditampilkan saat tombol diklik */
+.additional-content {
+    display: none;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #dcdcdc;
+}
+
+/* Styling untuk tombol */
+.btn-primary {
+    background-color: #4e73df;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2d56a1; /* Darker blue for hover */
+}
+
+    </style>
+        <script>
+            function updateColumnContent(menu, shape) {
+                const column = document.getElementById('column1');
+                if (menu === 'pengertian') {
+                    if (shape === 'Persegi') {
+                        column.innerHTML = `
+                            <p>Persegi adalah bangun datar yang memiliki empat sisi sama panjang dan empat sudut siku-siku.</p>
+                            <button class="btn btn-primary" onclick="toggleAdditionalContent('persegi')">Selengkapnya</button>
+                            <div id="persegi" class="additional-content">
+                                <h5>Contoh Persegi:</h5>
+                                <p>Persegi dapat ditemukan pada benda seperti kotak tisu, meja kecil, dan lain-lain.</p>
+                            </div>
+                        `;
+                    } else if (shape === 'Persegi Panjang') {
+                        column.innerHTML = `
+                            <p>Persegi panjang adalah bangun datar yang memiliki dua pasang sisi yang saling sejajar dan panjang sisi yang berbeda.</p>
+                            <button class="btn btn-primary" onclick="toggleAdditionalContent('persegipanjang')">Selengkapnya</button>
+                            <div id="persegipanjang" class="additional-content">
+                                <h5>Contoh Persegi Panjang:</h5>
+                                <p>Persegi panjang dapat ditemukan pada benda seperti layar TV, papan tulis, dan lain-lain.</p>
+                            </div>
+                        `;
+                    } else if (shape === 'Segitiga') {
+                        column.innerHTML = `
+                            <p>Segitiga adalah bangun datar yang memiliki tiga sisi dan tiga sudut.</p>
+                            <button class="btn btn-primary" onclick="toggleAdditionalContent('segitiga')">Selengkapnya</button>
+                            <div id="segitiga" class="additional-content">
+                                <h5>Contoh Segitiga:</h5>
+                                <p>Segitiga dapat ditemukan pada benda seperti atap rumah, tenda, dan lain-lain.</p>
+                            </div>
+                        `;
+                    } else if (shape === 'Lingkaran') {
+                        column.innerHTML = `
+                            <p>Lingkaran adalah bangun datar yang terdiri dari semua titik yang memiliki jarak yang sama dari titik pusatnya.</p>
+                            <button class="btn btn-primary" onclick="toggleAdditionalContent('lingkaran')">Selengkapnya</button>
+                            <div id="lingkaran" class="additional-content">
+                                <h5>Contoh Lingkaran:</h5>
+                                <p>Lingkaran dapat ditemukan pada benda seperti roda sepeda, jam dinding, dan lain-lain.</p>
+                            </div>
+                        `;
+                    }
+                } else if (menu === 'sifat') {
+                    if (shape === 'Persegi') {
+                        column.innerHTML = `
+                            <h5>Sifat-sifat Persegi:</h5>
+                            <ol>
+                                <li>Semua sisi sama panjang.</li>
+                                <li>Semua sudut siku-siku (90°).</li>
+                                <li>Diagonalnya saling tegak lurus dan membagi dua bagian yang sama.</li>
+                                <li>Diagonalnya memiliki panjang yang sama.</li>
+                            </ol>
+                        `;
+                    } else if (shape === 'Persegi Panjang') {
+                        column.innerHTML = `
+                            <h5>Sifat-sifat Persegi Panjang:</h5>
+                            <ol>
+                                <li>Memiliki dua pasang sisi yang saling sejajar dan memiliki panjang yang sama pada tiap pasang sisi.</li>
+                                <li>Semua sudut siku-siku (90°).</li>
+                                <li>Diagonalnya memiliki panjang yang berbeda, tetapi saling membagi dua bagian yang sama.</li>
+                            </ol>
+                        `;
+                    } else if (shape === 'Segitiga') {
+                        column.innerHTML = `
+                            <h5>Sifat-sifat Segitiga:</h5>
+                            <ol>
+                                <li>Memiliki tiga sisi dan tiga sudut.</li>
+                                <li>Jumlah sudut dalam segitiga selalu 180°.</li>
+                                <li>Jenis segitiga dibedakan berdasarkan panjang sisi dan besar sudut.</li>
+                            </ol>
+                        `;
+                    } else if (shape === 'Lingkaran') {
+                        column.innerHTML = `
+                            <h5>Sifat-sifat Lingkaran:</h5>
+                            <ol>
+                                <li>Memiliki jari-jari yang sama panjang dari titik pusat ke setiap titik pada lingkaran.</li>
+                                <li>Lingkaran tidak memiliki sudut.</li>
+                                <li>Keliling lingkaran dapat dihitung dengan rumus 2πr (dengan r sebagai jari-jari).</li>
+                            </ol>
+                        `;
+                    }
+                } else if (menu === 'gambar') {
+                    if (shape === 'Persegi') {
+                        column.innerHTML = '<div class="image-container"><img src="Persegi.png" alt="gambar persegi"></div>';
+                    } else if (shape === 'Persegi Panjang') {
+                        column.innerHTML = '<div class="image-container"><img src="Persegipanjang.png" alt="Persegi Panjang"></div>';
+                    } else if (shape === 'Segitiga') {
+                        column.innerHTML = '<div class="image-container"><img src="Segitiga.png" alt="Segitiga"></div>';
+                    } else if (shape === 'Lingkaran') {
+                        column.innerHTML = '<div class="image-container"><img src="Lingkaran.png" alt="Lingkaran"></div>';
+                    }
+                }
+            }
+    
+            function toggleAdditionalContent(id) {
+                const content = document.getElementById(id);
+                if (content.style.display === "none" || content.style.display === "") {
+                    content.style.display = "block";
+                } else {
+                    content.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+    <body>
+    
+        <header>BANGUN DATAR</header>
+    
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Persegi
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('pengertian', 'Persegi')">Pengertian</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('sifat', 'Persegi')">Sifat-sifat</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('gambar', 'Persegi')">Gambar</button></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Persegi Panjang
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('pengertian', 'Persegi Panjang')">Pengertian</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('sifat', 'Persegi Panjang')">Sifat-sifat</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('gambar', 'Persegi Panjang')">Gambar</button></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Segitiga
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('pengertian', 'Segitiga')">Pengertian</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('sifat', 'Segitiga')">Sifat-sifat</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('gambar', 'Segitiga')">Gambar</button></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Lingkaran
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('pengertian', 'Lingkaran')">Pengertian</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('sifat', 'Lingkaran')">Sifat-sifat</button></li>
+                                <li><button class="dropdown-item" type="button" onclick="updateColumnContent('gambar', 'Lingkaran')">Gambar</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col" id="column1">
+                Pilih menu untuk melihat pengertian, sifat-sifat, atau gambar dari bangun datar.
+            </div>
+            <div class="col" id="column2">
+                <h5>Fungsi Bangun Datar dalam Kehidupan Sehari-hari</h5>
+                <p><strong>Persegi:</strong> Digunakan dalam desain kotak kemasan, papan catur, dan banyak struktur bangunan dengan bentuk teratur.</p>
+                <p><strong>Persegi Panjang:</strong> Digunakan dalam desain layar monitor, TV, serta struktur gedung dan jalan.</p>
+                <p><strong>Segitiga:</strong> Sangat penting dalam desain arsitektur karena kestabilannya, seperti pada struktur atap piramida dan jembatan.</p>
+                <p><strong>Lingkaran:</strong> Digunakan dalam desain roda kendaraan, jam dinding, serta dalam berbagai bentuk geometri alami seperti bentuk bunga dan planet.</p>
+            </div>                        
+            <div class="col" id="column3">
+                <h5>Statistik Penggunaan Bangun Datar</h5>
+                <p><strong>Persegi:</strong> Persegi adalah bentuk yang paling umum digunakan dalam desain arsitektur modern. Diperkirakan lebih dari 60% gedung di seluruh dunia memiliki elemen persegi.</p>
+                <p><strong>Segitiga:</strong> Segitiga digunakan dalam berbagai bentuk struktur bangunan dan jembatan, karena kekuatannya yang optimal. Sekitar 25% bangunan dan jembatan dunia mengandalkan bentuk segitiga dalam konstruksinya.</p>
+                <p><strong>Lingkaran:</strong> Lingkaran digunakan di berbagai bidang, mulai dari desain jam hingga roda kendaraan. Lingkaran juga merupakan bentuk yang ditemukan dalam banyak fenomena alam, seperti bunga, matahari, dan bulan.</p>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Bangun Datar. All Rights Reserved.</p>
+    </div>
+
+</body>
+</html>
